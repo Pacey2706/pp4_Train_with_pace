@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
     'cloudinary',
     'bookings',
 ]
@@ -88,12 +89,26 @@ TEMPLATES = [
     },
 ]
 
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
         'APP': {
             'client_id': '592cadabb2093c3844ee',
             'secret': 'e90696ed71b8a71f5e759763b4c8dfa7716be5a8',
             'key': ''
+        }
+    },
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
         }
     }
 }

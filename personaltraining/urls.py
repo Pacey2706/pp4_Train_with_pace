@@ -22,7 +22,12 @@ def home(request):
     return render(request, 'home.html')  # bad practice remove and fix asap
 
 
+def login(request):
+    return render(request, 'login.html')  # bad practice remove and fix asap
+
+
 urlpatterns = [
+    path('', login),
     path('', home),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
