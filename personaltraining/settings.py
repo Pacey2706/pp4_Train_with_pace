@@ -32,6 +32,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['train-with-pace-671ab8a3ac73.herokuapp.com', '8000-pacey2706-pp4trainwithp-8lrwmd3mvfg.ws-eu101.gitpod.io', 'localhost']
 
+SITE_ID = 1
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Application definition
 
@@ -43,6 +50,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'cloudinary_storage',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
     'cloudinary',
     'bookings',
 ]
@@ -70,10 +82,21 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'APP': {
+            'client_id': '592cadabb2093c3844ee',
+            'secret': 'e90696ed71b8a71f5e759763b4c8dfa7716be5a8',
+            'key': ''
+        }
+    }
+}
 
 WSGI_APPLICATION = 'personaltraining.wsgi.application'
 
