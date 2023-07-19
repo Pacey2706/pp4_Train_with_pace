@@ -26,7 +26,12 @@ def login(request):
     return render(request, 'login.html')  # bad practice remove and fix asap
 
 
+def signup(request):
+    return render(request, 'signup.html')  # bad practice remove and fix asap
+
+
 urlpatterns = [
+    path('', signup),
     path('', login),
     path('', home),
     path('admin/', admin.site.urls),
