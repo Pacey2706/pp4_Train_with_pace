@@ -18,22 +18,7 @@ from django.shortcuts import render
 from django.urls import path, include
 
 
-def home(request):
-    return render(request, 'base.html')  # bad practice remove and fix asap
-
-
-def login(request):
-    return render(request, 'login.html')  # bad practice remove and fix asap
-
-
-def signup(request):
-    return render(request, 'signup.html')  # bad practice remove and fix asap
-
-
 urlpatterns = [
-    path('', signup),
-    path('', login),
-    path('', home),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
 ]
