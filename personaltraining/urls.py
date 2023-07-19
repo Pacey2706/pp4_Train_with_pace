@@ -19,7 +19,7 @@ from django.urls import path, include
 
 
 def home(request):
-    return render(request, 'home.html')  # bad practice remove and fix asap
+    return render(request, 'base.html')  # bad practice remove and fix asap
 
 
 def login(request):
