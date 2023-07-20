@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['train-with-pace-671ab8a3ac73.herokuapp.com', '8000-pacey2706-pp4trainwithp-8lrwmd3mvfg.ws-eu101.gitpod.io', 'localhost']
+ALLOWED_HOSTS = ['train-with-pace-671ab8a3ac73.herokuapp.com', '8000-pacey2706-pp4trainwithp-8lrwmd3mvfg.ws-eu101.gitpod.io', '8000-pacey2706-pp4trainwithp-8lrwmd3mvfg.ws-eu102.gitpod.io', 'localhost']
 
 SITE_ID = 1
 
