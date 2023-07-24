@@ -19,5 +19,4 @@ from . import views
 
 urlpatterns = [
     path('dashboard/<str:id>', views.dashboard, name="dashboard"),
-    
 ]
