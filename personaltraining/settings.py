@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'cloudinary',
     'bookings',
+    'train_with_pace',
 ]
 
 MIDDLEWARE = [
