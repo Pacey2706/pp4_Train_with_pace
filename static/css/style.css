@@ -1,3 +1,11 @@
+body{
+    background-color: #212529;
+}
+
+h1,h2,h3,h4,p{
+    color: white;
+}
+
 .card-overlay {
     background: rgba(0, 0, 0, 0.7);
   }
