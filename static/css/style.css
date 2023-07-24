@@ -1,9 +1,17 @@
 body{
-    background-color: #212529;
+    background-color: #191b1f;
 }
 
 h1,h2,h3,h4,p{
     color: white;
+}
+
+hr{
+    border: 3px solid white;
+    border-radius: 5px;
+    background-color: white;
+    width: 75%;
+    margin: auto;
 }
 
 .card-overlay {

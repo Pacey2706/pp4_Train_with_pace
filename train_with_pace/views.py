@@ -9,12 +9,6 @@ def home(request):
     return render(request, "train_with_pace/index.html", context)
 
 
-def about(request):
-    # View to handle home page requests
-    context = {}
-    return render(request, "train_with_pace/about.html", context)
-
-
 def services(request):
     # View to handle home page requests
     context = {}
