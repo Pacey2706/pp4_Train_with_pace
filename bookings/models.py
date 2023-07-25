@@ -4,7 +4,7 @@ from cloudinary.models import CloudinaryField
 
 
 class Trainer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     bio = models.TextField()
     specialties = models.CharField(max_length=300)
 
@@ -13,7 +13,7 @@ class Trainer(models.Model):
 
 
 class Client(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=20, default='')
     address = models.CharField(max_length=100, default='')
 

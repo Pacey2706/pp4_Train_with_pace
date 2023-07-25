@@ -19,4 +19,5 @@ from . import views
 
 urlpatterns = [
     path('dashboard/<str:id>', views.dashboard, name="dashboard"),
+    path('update_client/<str:id>', views.update_client, name="update-client"),
 ]

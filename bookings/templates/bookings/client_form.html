@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h2>Please complete your details</h2>
+    <form action="{% url 'update-client' request.user.id %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <button class="btn m-2" type="submit">submit</button>
+    </form>
+</section>
+{% endblock %}
