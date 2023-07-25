@@ -6,6 +6,10 @@ h1,h2,h3,h4,p{
     color: white;
 }
 
+white{
+    color: white;
+}
+
 hr{
     border: 3px solid white;
     border-radius: 5px;
@@ -17,3 +21,12 @@ hr{
 .card-overlay {
     background: rgba(0, 0, 0, 0.7);
   }
+
+  .about-me-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;}
