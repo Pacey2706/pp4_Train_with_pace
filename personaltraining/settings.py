@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['train-with-pace-671ab8a3ac73.herokuapp.com', '8000-pacey2706-pp4trainwithp-8lrwmd3mvfg.ws-eu101.gitpod.io', '8000-pacey2706-pp4trainwithp-8lrwmd3mvfg.ws-eu102.gitpod.io', 'localhost']
+ALLOWED_HOSTS = ['train-with-pace-671ab8a3ac73.herokuapp.com', '8000-pacey2706-pp4trainwithp-8lrwmd3mvfg.ws-eu101.gitpod.io', '8000-pacey2706-pp4trainwithp-8lrwmd3mvfg.ws-eu102.gitpod.io', '8000-pacey2706-pp4trainwithp-wz6nn5qobs8.ws-eu102.gitpod.io', 'localhost']
 
 SITE_ID = 1
 
@@ -110,7 +110,6 @@ DATABASES = {
 }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -133,8 +132,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 # TO-DO CHANGE TO MANDATORY ON DEPLOYED SITE!
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_PRESERVER_USERNAME_CASING = False
 ACCOUNT_USERNAME_REQUIRED = False
 # this is the name of the url path that the user is taken to when they log in.
@@ -148,7 +147,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-
 
 
 # Internationalization
