@@ -3,7 +3,18 @@
 {% block content %}
 <!--User Dashboard-->
 <h1>HEllO</h1>
+<!-- -->
 <p>request user = {{request.user.id}}</p>
 <p>context user = {{id}}</p>
+<p>{{client}}</p>
+
+<div class="card-body">
+    <h5 class="card-title">{{request.user.username}}</h5>
+    <p class="card-text">{{request.user.email}}</p>
+    <p class="card-text">{{client.number}}</p>
+    <p class="card-text">{{client.address}}</p>
+
+<!--create link button client_form page-->
+<a class="btn btn-primary" href="{% url 'update-client' client %}" role="button">update</a>
 
 {% endblock %}

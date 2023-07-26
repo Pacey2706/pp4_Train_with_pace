@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('train_with_pace.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('accounts/login/bookings/', include('bookings.urls')),
     path('bookings/', include('bookings.urls')),
 ]
