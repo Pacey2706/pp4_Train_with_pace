@@ -30,7 +30,6 @@ def update_client(request, id):
             form = ClientForm(request.POST, instance=client)
             if form.is_valid():
                 try:
-                    print('trying to save')
                     form.save()
                     return redirect("dashboard", request.user.id)
                 except Exception:
@@ -48,8 +47,15 @@ def update_client(request, id):
         # if the requested user is not client user,
         # redirect user to the correct profile
         return redirect("update-client", client.user.id)
-    
+
     context = {"form": form, "client": client}
     return render(request, "bookings/client_form.html", context)
 
-
+@login_required
+def select_bookings(request, id):
+    if request.method == 'POST':
+        session = request.POST.get('session')
+        day = request.POST.get('day')
+        if service == None:
+            messages.success(request, "Please Select A Session!")
+            return redirect('booking')
