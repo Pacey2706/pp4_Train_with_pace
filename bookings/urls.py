@@ -20,4 +20,6 @@ from . import views
 urlpatterns = [
     path('dashboard/<str:id>', views.dashboard, name="dashboard"),
     path('update_client/<str:id>', views.update_client, name="update-client"),
+    path('booking_form/<str:session>', views.book_session, name="booking-form"),
+    path('session_form/<str:id>', views.select_session, name="select-session"),
 ]

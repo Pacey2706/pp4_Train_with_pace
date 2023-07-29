@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h2>when would you like to book?</h2>
+    <form action="{% url 'booking-form' session %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <button class="btn m-2 btn-primary" type="submit">submit</button>
+    </form>
+</section>
+{% endblock %}

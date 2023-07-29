@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <h2>Please select your session</h2>
+    <form action="{% url 'select-session' client_id %}" method="post">
+        {% csrf_token %}
+        {{form}}
+        <button class="btn m-2 btn-primary" type="submit">submit</button>
+    </form>
+</section>
+{% endblock %}
