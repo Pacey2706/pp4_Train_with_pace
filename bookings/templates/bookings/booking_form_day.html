@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Select Booking Day</h1>
+<p>Please select a day</p>
+<form method="post">
+    {% csrf_token %}
+    {{ day_form }}
+    <button class="btn m-2 btn-primary" type="submit">Submit</button>
+  </form>
+</form>
+{% endblock %}

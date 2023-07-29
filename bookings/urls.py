@@ -22,4 +22,5 @@ urlpatterns = [
     path('update_client/<str:id>', views.update_client, name="update-client"),
     path('booking_form/<str:session>', views.book_session, name="booking-form"),
     path('session_form/<str:id>', views.select_session, name="select-session"),
+    path('select_booking_time/<str:session>', views.select_booking_time, name="select-booking-time"),
 ]

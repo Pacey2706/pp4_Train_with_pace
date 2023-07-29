@@ -3,7 +3,7 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Client, Booking, Session
-from .forms import ClientForm, BookingForm, SessionForm
+from .forms import ClientForm, BookingForm, SessionForm, BookingDayForm, BookingTimeForm
 
 
 # views go here
@@ -55,27 +55,40 @@ def update_client(request, id):
 
 @login_required
 def book_session(request, session):
-    if session == "1":
-        session_obj = get_object_or_404(Session, duration=30)
-    elif session == "2":
-        session_obj = get_object_or_404(Session, duration=60)
+    if request.method == "POST":
+        day_form = BookingDayForm(request.POST)
+        if day_form.is_valid():
+            selected_day = day_form.cleaned_data["day"]
+            request.session["selected_day"] = str(selected_day)
+            return redirect("select-booking-time", session)
+
+    else:
+        day_form = BookingDayForm()
+    context = {"day_form": day_form, "session": session}
+    return render(request, "bookings/booking_form_day.html", context)
+
+
+@login_required
+def select_booking_time(request, session):
+    selected_day = request.session.get("selected_day")
+    print(selected_day)
+    if not selected_day:
+        return redirect("select-session", id=request.user.id)
 
     if request.method == "POST":
-        form = BookingForm(request.POST)
-        if form.is_valid():
+        time_form = BookingTimeForm(request.POST)
+        if time_form.is_valid():
+            selected_time = time_form.cleaned_data["time"]
+            session_obj = get_object_or_404(Session, duration=request.POST["session"])
             client = get_object_or_404(Client, user=request.user)
-            booking = form.save(commit=False)
-            booking.session = session_obj
-
-            booking.client = client
-            booking.save()
+            booking = Booking.objects.create(session=session_obj, client=client, date=selected_day, time=selected_time)
             return redirect("dashboard", request.user.id)
 
     else:
-        form = BookingForm()
+        time_form = BookingTimeForm()
 
-    context = {"form": form, "session": session, "session_obj": session_obj}
-    return render(request, "bookings/booking_form.html", context)
+    context = {"time_form": time_form, "session": session, "selected_day": selected_day}
+    return render(request, "bookings/booking_form_time.html", context)
 
 
 @login_required
@@ -94,8 +107,3 @@ def select_session(request, id):
         "client_id": id,
     }
     return render(request, "bookings/session_form.html", context)
-    # if form is valid
-
-    # redirect passing through session value
-    # otherwise put form in context and clinet_id
-    # render form
