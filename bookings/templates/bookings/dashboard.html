@@ -11,24 +11,25 @@
 <div class="card-body">
     <h5 class="card-title">User Name: {{request.user.username}}</h5>
     <p class="card-text">Email Address: {{request.user.email}}</p>
-    <p class="card-text">Phone Number: {{ client.phone_number }}</p> <!-- these do not work... -->
-    <p class="card-text">Address: {{ client.address }}</p> <!-- these do not work... -->
-
+    <p class="card-text">Phone Number: {{client.phone_number}}</p> <!-- these do not work... -->
+    <p class="card-text">Address: {{client.address}}</p> <!-- these do not work... -->
+</div>
 
 <!--create link button client_form page-->
-<a class="btn btn-primary" href="{% url 'update-client' client %}" role="button">update</a>
+<a class="btn btn-primary" href="{% url 'update-client' client.id %}" role="button">update</a>
 
 <div>
     {% for x in bookings %}
-<div class="card mb-3 bg-dark">
-    <div class="card-body">
-        <h5 class="card-title">{{ x.session.name }}</h5>
-        <p class="card-text">Date: {{ x.date }}</p>
-        <p class="card-text">Time: {{ x.time }}</p>
+    <div class="card mb-3 bg-dark">
+        <div class="card-body">
+            <h5 class="card-title">{{ x.session.name }}</h5>
+            <p class="card-text">Date: {{ x.date }}</p>
+            <p class="card-text">Time: {{ x.time }}</p>
+        </div>
+        <a class="btn btn-danger" href="{% url 'confirm-delete-session' x.id %}">delete</a>
     </div>
-</div>
-{% endfor %}
-<a class="btn btn-primary" href="{% url 'select-session' client %}">select</a>
+    {% endfor %}
+    <a class="btn btn-primary" href="{% url 'select-session' client.id %}">select</a>
 </div>
 
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Select Booking Time</h1>
 <p>Please choose a time for your booking.</p>
-<form method="post">
+<form action="{% url 'select-booking-time' session %}" method="post">
   {% csrf_token %}
   {{ time_form.as_p }}
   <button class="btn m-2 btn-primary" type="submit">Book</button>

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Are you sure you want to cancel this booking?</h1>
+<a class="btn m-2 btn-primary" href="{% url 'dashboard' request.user.id %}">No Keep booking</a>
+<form action="{% url 'confirm-delete-session' booking.id %}" method="post">
+  {% csrf_token %}
+  <button class="btn m-2 btn-danger" type="submit">Delete</button>
+</form>
+{% endblock %}

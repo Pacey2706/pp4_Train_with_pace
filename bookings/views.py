@@ -18,7 +18,7 @@ def dashboard(request, id):
     except Exception:
         client = None
     # then add clinet id to context
-    context = {'id': id, "client": client.id, "bookings": bookings}
+    context = {'id': id, "client": client, "bookings": bookings}
     return render(request, 'bookings/dashboard.html/', context)
 
 
@@ -79,7 +79,11 @@ def select_booking_time(request, session):
         time_form = BookingTimeForm(request.POST)
         if time_form.is_valid():
             selected_time = time_form.cleaned_data["time"]
-            session_obj = get_object_or_404(Session, duration=request.POST["session"])
+            if session == "1":
+                duration = 30
+            elif session == "2":
+                duration = 60
+            session_obj = get_object_or_404(Session, duration=duration)
             client = get_object_or_404(Client, user=request.user)
             booking = Booking.objects.create(session=session_obj, client=client, date=selected_day, time=selected_time)
             return redirect("dashboard", request.user.id)
@@ -107,3 +111,15 @@ def select_session(request, id):
         "client_id": id,
     }
     return render(request, "bookings/session_form.html", context)
+
+
+@login_required
+def delete_session(request, id):
+    booking = get_object_or_404(Booking, id=id)
+    if request.method == 'POST':
+        booking.delete()
+        return redirect("dashboard", request.user.id)
+    else:
+        context = {"booking": booking}
+        return render(request, "bookings/delete_booking_form.html", context)
+

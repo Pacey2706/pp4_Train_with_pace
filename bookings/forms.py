@@ -30,10 +30,6 @@ class BookingDayForm(forms.Form):
 
 
 class BookingTimeForm(forms.Form):
-    session = forms.ModelChoiceField(
-        queryset=Session.objects.all(),
-        widget=forms.HiddenInput()
-    )
     time = forms.TimeField(
         widget=forms.TimeInput(attrs={'type': 'time'}),
         label="Select a time",
